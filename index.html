@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check the weather!</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="main-container">
+      <div id="header"><h1>Check the weather!</h1></div>
+      <div id="city-input">
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="Put a city name here..."
+        />
+        <input type="button" id="submit-city" value="Get the weather!" />
+        <!-- change the naming -->
+      </div>
+      <div id="current-weather-container">
+        <div id="current-weather-pic"></div>
+        <div id="current-weather-data"></div>
+      </div>
+      <div id="forecast-container"></div>
+    </div>
+  </body>
+</html>

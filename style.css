@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Merriweather&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: rgb(65, 202, 197);
+  --secondary: rgb(78, 161, 209);
+  --primary-dark: rgb(72, 116, 168);
+  --secondary-dark: rgb(89, 83, 134);
+  --really-dark: rgb(82, 67, 100);
+}
+body {
+  font-family: "Inter", sans-serif;
+  background: white;
+  height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Merriweather", serif;
+  color: var(--really-dark);
+}
+
+h1 {
+  font-size: 34px;
+  color: white;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 500px;
+  margin: auto;
+  height: 100%;
+  background-color: var(--really-dark);
+}
+
+#header {
+  width: 100%;
+  text-align: center;
+  background-color: var(--primary);
+  padding: 20px;
+  font-size: 3em;
+  margin: 0;
+  font-family: "Merriweather", serif;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.219);
+  z-index: 9;
+}
+#city-input {
+  width: 100%;
+  padding: 20px;
+  background: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  z-index: 8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#city-input input#city {
+  border: none;
+  color: white;
+  border-bottom: 1px solid white;
+  margin-bottom: 20px;
+  background: inherit;
+  padding: 10px;
+  font-size: 16px;
+}
+
+::placeholder {
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+input#submit-city {
+  padding: 10px;
+  border: 1px solid transparent;
+  color: var(--primary-dark);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  cursor: pointer;
+}
+input#submit-city:hover {
+  background: var(--secondary);
+  border: 1px solid white;
+  transition: 0.2s ease-in-out;
+  color: white;
+}
+#current-weather-container {
+  display: flex;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.219);
+  width: 100%;
+  justify-content: center;
+  z-index: 7;
+}
+
+#current-weather-pic {
+  background-color: rgb(137, 176, 221);
+}
+
+#current-weather-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  background-color: var(--primary-dark);
+  color: white;
+  width: 100%;
+}
+
+#all-forecasts {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+#forecast-container {
+  width: 100%;
+  background: var(--secondary-dark);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.219);
+}
+#forecast-container h2 {
+  padding: 40px 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+.forecastDay {
+  display: none;
+}
+
+.forecastSlider {
+  width: 500px;
+  height: 240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: auto;
+  padding: 20px;
+  box-shadow: 0px 10px 10px -10px inset;
+}
+.forecastSlider::-webkit-scrollbar {
+  height: 10px;
+}
+.forecastSlider::-webkit-scrollbar-track {
+  background-color: #453f6e;
+}
+.forecastSlider::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 0px;
+  transition: all 0.2s ease-in-out;
+}
+.forecastSlider::-webkit-scrollbar-thumb:hover {
+  border-radius: 5px;
+}
+.forecastSlide {
+  width: 150px;
+  flex-shrink: 0;
+  height: 150px;
+  margin-right: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: #ffffff2b;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecastSlideContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecastSlideContent img {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  filter: brightness(2);
+}
+
+.forecast-button {
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  background: var(--secondary-dark);
+  border: none;
+  padding: 10px;
+  color: #ffffffba;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.267);
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.forecast-button:hover {
+  background: rgb(69, 64, 107);
+}
+.forecast-button::after {
+  content: "";
+  position: relative;
+  top: 10px;
+  display: block;
+  border: 10px solid transparent;
+  border-top-color: white;
+  transition: all 0.2s ease-in-out;
+}
+.forecast-button:hover::after {
+  transform: translateY(5px);
+}
