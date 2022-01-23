@@ -11,13 +11,13 @@ document.getElementById("submit-city").addEventListener("click", onClick);
 if (debug) {
   onClick();
 }
-async function onClick() {
+const onClick = async () => {
   var inputValue = debug ? debug : document.getElementById("city").value;
   let validCity = false;
   currentDate = new Date();
   //Fetch the weather of today (right now)
   await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
+    `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -35,19 +35,19 @@ async function onClick() {
   if (validCity) {
     //Fetching the forecast after the main weather
     await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
     )
       .then((response) => response.json())
       .then((data) => displayForecast(data));
   }
-}
+};
 
-function displayCurrentWeather(data) {
+const displayCurrentWeather = (data) => {
   // Creates the picture before adding the data
   const weatherPic = document.getElementById("current-weather-pic");
   weatherPic.innerHTML = "";
   const tempPic = document.createElement("img");
-  tempPic.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  tempPic.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   weatherPic.append(tempPic);
 
   // Displaying current weather data besides picture
@@ -65,9 +65,9 @@ function displayCurrentWeather(data) {
   const cityTemp = document.createElement("p");
   cityTemp.innerText = `Current temperature: ${data.main.temp} °C`;
   weatherDisplay.append(cityTemp);
-}
+};
 
-function displayForecast(data) {
+const displayForecast = (data) => {
   console.log(data);
   const allForecastsContainer = document.querySelector("#forecast-container");
   allForecastsContainer.innerHTML = "";
@@ -140,7 +140,7 @@ function displayForecast(data) {
       const slidePic = document.createElement("div");
       const image = document.createElement("img");
       slidePic.classList.add("forecastSlideContent");
-      image.src = `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`;
+      image.src = `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`;
       slidePic.append(image);
       forecastSlide.append(slidePic);
 
@@ -150,4 +150,4 @@ function displayForecast(data) {
       forecastSlide.append(slideTemp);
     }
   }
-}
+};
