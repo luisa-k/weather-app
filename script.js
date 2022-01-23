@@ -1,5 +1,5 @@
 let currentDate;
-let debug = "barcelona";
+let debug = false;
 const dateOptions = {
   weekday: "long",
   year: "numeric",
@@ -68,7 +68,7 @@ const displayCurrentWeather = (data) => {
 };
 
 const displayForecast = (data) => {
-  console.log(data);
+  //console.log(data);
   const allForecastsContainer = document.querySelector("#forecast-container");
   allForecastsContainer.innerHTML = "";
 
