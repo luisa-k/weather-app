@@ -7,41 +7,6 @@ const dateOptions = {
   day: "numeric",
 };
 
-document.getElementById("submit-city").addEventListener("click", onClick);
-if (debug) {
-  onClick();
-}
-const onClick = async () => {
-  var inputValue = debug ? debug : document.getElementById("city").value;
-  let validCity = false;
-  currentDate = new Date();
-  //Fetch the weather of today (right now)
-  await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      if (inputValue === "") {
-        window.alert("Please put a city!");
-        return;
-      }
-      if (data.cod === "404") {
-        window.alert(data.message);
-        return;
-      }
-      validCity = true;
-      displayCurrentWeather(data);
-    });
-  if (validCity) {
-    //Fetching the forecast after the main weather
-    await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
-    )
-      .then((response) => response.json())
-      .then((data) => displayForecast(data));
-  }
-};
-
 const displayCurrentWeather = (data) => {
   // Creates the picture before adding the data
   const weatherPic = document.getElementById("current-weather-pic");
@@ -151,3 +116,39 @@ const displayForecast = (data) => {
     }
   }
 };
+
+const onClick = async () => {
+  var inputValue = debug ? debug : document.getElementById("city").value;
+  let validCity = false;
+  currentDate = new Date();
+  //Fetch the weather of today (right now)
+  await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      if (inputValue === "") {
+        window.alert("Please put a city!");
+        return;
+      }
+      if (data.cod === "404") {
+        window.alert(data.message);
+        return;
+      }
+      validCity = true;
+      displayCurrentWeather(data);
+    });
+  if (validCity) {
+    //Fetching the forecast after the main weather
+    await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&units=metric&appid=955acaf99fc844f28513c2020912ecff`
+    )
+      .then((response) => response.json())
+      .then((data) => displayForecast(data));
+  }
+};
+
+document.getElementById("submit-city").addEventListener("click", onClick);
+if (debug) {
+  onClick();
+}
